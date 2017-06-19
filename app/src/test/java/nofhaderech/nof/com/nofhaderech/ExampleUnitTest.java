@@ -2,6 +2,9 @@ package nofhaderech.nof.com.nofhaderech;
 
 import org.junit.Test;
 
+import nofhaderech.nof.com.nofhaderech.bl.UsersManager;
+import nofhaderech.nof.com.nofhaderech.models.User;
+
 import static org.junit.Assert.*;
 
 /**
@@ -11,7 +14,9 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+    public void testAddUser() throws Exception {
+        UsersManager manager = new UsersManager();
+        manager.AddUser(new User("OrenShm", "0509218146", "Oren's Home", "Oren's Work", 0, 0));
+        //assertEquals(4, 2 + 2);
     }
 }
