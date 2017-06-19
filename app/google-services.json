@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "988292090165",
+    "firebase_url": "https://nofhaderech.firebaseio.com",
+    "project_id": "nofhaderech",
+    "storage_bucket": "nofhaderech.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988292090165:android:5cb09b2d2c089f9c",
+        "android_client_info": {
+          "package_name": "nofhaderech.nof.com.nofhaderech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "988292090165-9vnsn7jk1tfcr2kso8dgqo9ko4012a6n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nofhaderech.nof.com.nofhaderech",
+            "certificate_hash": "c5e4fb948fc7df9080bdc810a2d7deeb3d082c57"
+          }
+        },
+        {
+          "client_id": "988292090165-vdrj21b8qm3a20k7of0m3f12lh7smil9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3-nEBF0ULYQrxJfUXtAbueSTJE89koe4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "988292090165-vdrj21b8qm3a20k7of0m3f12lh7smil9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
