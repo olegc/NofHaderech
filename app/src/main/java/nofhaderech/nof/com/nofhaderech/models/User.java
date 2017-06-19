@@ -13,6 +13,8 @@ public class User {
     public int points;
     public double rating;
 
+    public User(){}
+
     public User(String id, String mobile, String home_addr, String work_addr, int points, double rating) {
         this.id = id;
         this.mobile = mobile;

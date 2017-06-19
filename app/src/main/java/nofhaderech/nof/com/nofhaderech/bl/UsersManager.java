@@ -21,13 +21,15 @@ public class UsersManager {
     public void SetHomeAddr(String userId, String home_addr){
         dbHandler.AddToDB("/users/" + userId + "/home_addr", home_addr);
     }
+
     public void SetWorkAddr(String userId, String work_addr){
         dbHandler.AddToDB("/users/" + userId + "/work_addr", work_addr);
     }
-    public void AddPointsForRide(String userId){
 
+    public void AddPointsForRide(String userId){
+        dbHandler.IncreaseUserPoints(userId);
     }
     public void SetRatingForRide(String userId, int rating){
-
+        dbHandler.RateUser(userId, rating);
     }
 }
