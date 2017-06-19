@@ -35,6 +35,7 @@ class GiveRidePage {
 
         InitializeDate();
         InitializeFromTime();
+        InitializeToTime();
     }
 
     private void InitializeDate() {
@@ -88,4 +89,30 @@ class GiveRidePage {
             }
         });
     }
+
+    private void InitializeToTime() {
+        Calendar calendar = Calendar.getInstance();
+        ToHour = calendar.get(Calendar.HOUR_OF_DAY) + 2;
+        ToMinutes = 0;
+
+        TimeToText.setText("" + String.format("%02d", ToHour) + ":" + String.format("%02d", ToMinutes));
+
+        TimeToText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(Context, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinutes) {
+                        ToHour = selectedHour;
+                        ToMinutes = selectedMinutes;
+                        TimeToText.setText("" + String.format("%02d", ToHour) + ":" + String.format("%02d", ToMinutes));
+                    }
+                }, ToHour, ToMinutes, true);
+                mTimePicker.setTitle("בחר שעת סיום");
+                mTimePicker.show();
+            }
+        });
+    }
+
 }
