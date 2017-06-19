@@ -12,4 +12,10 @@
     <string name="error_field_required">שדה זה הוא חובה</string>
     <string name="permission_rationale">"הרשאה לאנשי קשר דרושה לצורך רשימת מיילים"
     </string>
+    <string name="title_activity_main">נוף הדרך</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">הגדרות</string>
 </resources>
