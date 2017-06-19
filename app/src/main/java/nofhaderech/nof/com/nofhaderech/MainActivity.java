@@ -58,7 +58,13 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (ContentMain.getVisibility() == View.VISIBLE) {
+                super.onBackPressed();
+            } else {
+                NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+                MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_home);
+                onNavigationItemSelected(menuItem);
+            }
         }
     }
 
@@ -90,11 +96,16 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if(id == R.id.nav_rider){
+        if(id==R.id.nav_home){
+            ContentMain.setVisibility(View.VISIBLE);
+            ContentRider.setVisibility(View.INVISIBLE);
+            ContentDriver.setVisibility(View.INVISIBLE);
+        }
+        if (id == R.id.nav_rider) {
             ContentMain.setVisibility(View.INVISIBLE);
             ContentRider.setVisibility(View.VISIBLE);
             ContentDriver.setVisibility(View.INVISIBLE);
-        } else if(id == R.id.nav_driver){
+        } else if (id == R.id.nav_driver) {
             ContentMain.setVisibility(View.INVISIBLE);
             ContentRider.setVisibility(View.INVISIBLE);
             ContentDriver.setVisibility(View.VISIBLE);
@@ -102,9 +113,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-            ContentMain.setVisibility(View.VISIBLE);
-            ContentRider.setVisibility(View.INVISIBLE);
-            ContentDriver.setVisibility(View.INVISIBLE);
+
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
@@ -121,10 +130,16 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void onRiderClick(View view) {
-        // Do something in response to button
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_rider);
+        menuItem.setChecked(true);
+        onNavigationItemSelected(menuItem);
     }
 
     public void onDriverClick(View view) {
-        // Do something in response to button
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_driver);
+        menuItem.setChecked(true);
+        onNavigationItemSelected(menuItem);
     }
 }
