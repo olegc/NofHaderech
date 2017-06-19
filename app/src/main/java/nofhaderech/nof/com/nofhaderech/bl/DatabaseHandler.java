@@ -6,6 +6,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * Created by USER on 6/19/2017.
@@ -22,6 +25,11 @@ public class DatabaseHandler {
         // [START initialize_database_ref]
         mDatabase = FirebaseDatabase.getInstance().getReference();
         // [END initialize_database_ref]
+    }
+
+    public void AddToDbRandomKey (String childObject, Object value){
+        String key = mDatabase.child(childObject).push().getKey();
+        mDatabase.child(childObject + "/" + key).setValue(value);
     }
 
     public void AddToDB (String key, Object value){
