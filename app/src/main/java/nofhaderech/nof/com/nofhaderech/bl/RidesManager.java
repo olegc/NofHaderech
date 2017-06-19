@@ -1,11 +1,5 @@
 package nofhaderech.nof.com.nofhaderech.bl;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import nofhaderech.nof.com.nofhaderech.models.Ride;
 
 /**
