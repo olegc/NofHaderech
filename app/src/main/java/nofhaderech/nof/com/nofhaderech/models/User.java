@@ -12,4 +12,15 @@ public class User {
 
     public int points;
     public double rating;
+
+    public User(String id, String mobile, String home_addr, String work_addr, int points, double rating) {
+        this.id = id;
+        this.mobile = mobile;
+        this.home_addr = home_addr;
+        this.work_addr = work_addr;
+        this.points = points;
+        this.rating = rating;
+    }
+
+
 }

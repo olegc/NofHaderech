@@ -12,4 +12,8 @@ public class RideDetails {
 
     public Date from_time;
     public Date to_time;
+
+    public RideDetails(String src_addr) {
+        this.src_addr = src_addr;
+    }
 }
