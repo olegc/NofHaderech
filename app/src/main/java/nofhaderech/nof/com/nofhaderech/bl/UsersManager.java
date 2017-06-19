@@ -1,7 +1,12 @@
 package nofhaderech.nof.com.nofhaderech.bl;
 
+import android.util.Log;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,31 +18,22 @@ import nofhaderech.nof.com.nofhaderech.models.User;
  */
 
 public class UsersManager {
-    // [START declare_database_ref]
-    private DatabaseReference mDatabase;
-    // [END declare_database_ref]
+    private DatabaseHandler dbHandler;
 
     public UsersManager()
     {
-        // [START initialize_database_ref]
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        // [END initialize_database_ref]
+        dbHandler = new DatabaseHandler();
     }
 
     public void AddUser(User user) {
-        // Create new user at /users/$userid
-        //String key = mDatabase.child("users").push().getKey();
-
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/users/" + user.id, user);
-        mDatabase.updateChildren(childUpdates);
+        dbHandler.AddToDB("/users/" + user.id, user);
     }
 
     public void SetHomeAddr(String userId, String home_addr){
-
+        dbHandler.AddToDB("/users/" + userId + "/home_addr", home_addr);
     }
     public void SetWorkAddr(String userId, String work_addr){
-
+        dbHandler.AddToDB("/users/" + userId + "/work_addr", work_addr);
     }
     public void AddPointsForRide(String userId){
 
