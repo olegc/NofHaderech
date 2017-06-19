@@ -35,7 +35,7 @@ import java.util.List;
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
- * A login screen that offers login via email/password.
+ * A login screen that offers login via email/password2.
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             "foo@example.com:hello", "bar@example.com:world"
     };
     /**
-     * Keep track of the login task to ensure we can cancel it if requested.
+     * Keep track of the login task to ensure we can cancel it if requested1.
      */
     private UserLoginTask mAuthTask = null;
 
