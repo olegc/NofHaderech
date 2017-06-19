@@ -14,10 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import nofhaderech.nof.com.nofhaderech.bl.DbMockifier;
-import nofhaderech.nof.com.nofhaderech.bl.UsersManager;
-import nofhaderech.nof.com.nofhaderech.models.User;
-
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -26,6 +22,7 @@ public class MainActivity extends AppCompatActivity
     private View ContentDriver;
 
     private GiveRidePage GiveRidePage;
+    private GetRidePage GetRidePage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +58,7 @@ public class MainActivity extends AppCompatActivity
         ContentDriver = findViewById(R.id.content_driver);
 
         GiveRidePage = new GiveRidePage(ContentDriver);
+        GetRidePage = new GetRidePage(ContentRider);
 
         MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_home);
         onNavigationItemSelected(menuItem);
@@ -114,7 +112,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if(id==R.id.nav_home){
+        if (id == R.id.nav_home) {
             ContentMain.setVisibility(View.VISIBLE);
             ContentRider.setVisibility(View.INVISIBLE);
             ContentDriver.setVisibility(View.INVISIBLE);
