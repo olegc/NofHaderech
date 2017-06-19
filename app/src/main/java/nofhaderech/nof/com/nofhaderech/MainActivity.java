@@ -1,5 +1,6 @@
 package nofhaderech.nof.com.nofhaderech;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity
     private View ContentMain;
     private View ContentRider;
     private View ContentDriver;
+
+    private GiveRidePage GiveRidePage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,11 @@ public class MainActivity extends AppCompatActivity
         ContentMain = findViewById(R.id.content_main);
         ContentRider = findViewById(R.id.content_rider);
         ContentDriver = findViewById(R.id.content_driver);
+
+        GiveRidePage = new GiveRidePage(ContentDriver);
+
+        MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_home);
+        onNavigationItemSelected(menuItem);
     }
 
     @Override
@@ -59,7 +67,11 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             if (ContentMain.getVisibility() == View.VISIBLE) {
-                super.onBackPressed();
+                //super.onBackPressed();
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             } else {
                 NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
                 MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_home);
@@ -142,4 +154,5 @@ public class MainActivity extends AppCompatActivity
         menuItem.setChecked(true);
         onNavigationItemSelected(menuItem);
     }
+
 }
