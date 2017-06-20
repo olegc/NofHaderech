@@ -32,7 +32,7 @@ public class ExampleUnitTest {
     @Test
     public void testAddUser() throws Exception {
         UsersManager manager = new UsersManager();
-        manager.AddUser(new User("OrenShm", "0509218146", "Carmelia", "Rafael", 0, 0));
+        manager.AddUser(new User("OrenShm", "0509218146", "Carmelia", "Rafael"));
     }
 
     @Test

@@ -12,16 +12,18 @@ public class User {
 
     public int points;
     public double rating;
+    public int num_ratings;
 
     public User(){}
 
-    public User(String id, String mobile, String home_addr, String work_addr, int points, double rating) {
+    public User(String id, String mobile, String home_addr, String work_addr) {
         this.id = id;
         this.mobile = mobile;
         this.home_addr = home_addr;
         this.work_addr = work_addr;
-        this.points = points;
-        this.rating = rating;
+        this.points = 0;
+        this.rating = 0;
+        this.num_ratings = 0;
     }
 
 
