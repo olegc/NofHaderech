@@ -22,6 +22,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,6 +32,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -367,15 +370,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 EditText phoneTexst = (EditText) findViewById(R.id.phone);
                 String phoneTexstStr = phoneTexst.getText().toString();
 
-                EditText adressTexst = (EditText) findViewById(R.id.adress);
-                String adressTexstStr = adressTexst.getText().toString();
-
-                EditText workAdressTexst = (EditText) findViewById(R.id.workAdress);
-                String workAdressTexstStr = workAdressTexst.getText().toString();
-
 
                 UsersManager manager = new UsersManager();
-                manager.AddUser(new User(nameStr,phoneTexstStr, adressTexstStr, workAdressTexstStr));
+                manager.AddUser(new User(nameStr,phoneTexstStr, "Carmelia", "Rafael"));
 
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);

@@ -16,9 +16,11 @@ public class DbMockifier {
     public void InitializeDB()
     {
         try {
-            testAddUser();
+//            testAddUser();
             testAddRideOffer();
+            Thread.sleep(5000);
             testAddRideRequest();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -26,7 +28,7 @@ public class DbMockifier {
 
     public void testAddUser() throws Exception {
         UsersManager manager = new UsersManager();
-        manager.AddUser(new User("OrenShm", "0509218146", "Carmelia", "Rafael"));
+        manager.AddUser(new User("OrenShm", "0509218146", "Carmelia", "Rafael", ""));
     }
 
     public void testAddRideOffer() throws Exception {
@@ -35,9 +37,8 @@ public class DbMockifier {
         Date from = new GregorianCalendar(2017,6,20,17,00,00).getTime();
         Date to = new GregorianCalendar(2017,6,20,17,30,00).getTime();
 
-        manager.AddRideOffer(new Ride("OrenShm", new RideDetails("Rafael", "Carmelia", from, to)));
-        manager.AddRideOffer(new Ride("OrenShm2", new RideDetails("Rafael", "Carmelia", from, to)));
-
+        manager.AddRideOffer(new Ride("Bad driver", new RideDetails("Rafael", "shit place", from, to)));
+        manager.AddRideOffer(new Ride("Good driver", new RideDetails("Rafael", "good place", from, to)));
     }
 
     public void testAddRideRequest() throws Exception {
@@ -45,6 +46,7 @@ public class DbMockifier {
 
         Date from = new GregorianCalendar(2017,6,20,17,00,00).getTime();
         Date to = new GregorianCalendar(2017,6,20,17,30,00).getTime();
-        manager.AddRideRequest(new Ride("Nir Amar", new RideDetails("Rafael", "Carmelia", from, to)));
+        manager.AddRideRequest(new Ride("Bad Guy", new RideDetails("Rafael", "got screwed", from, to)));
+        manager.AddRideRequest(new Ride("Good Guy", new RideDetails("Rafael", "good place", from, to)));
     }
 }
