@@ -43,7 +43,7 @@ public class GetRidePage {
         InitializeDate();
         InitializeFromTime();
         InitializeToTime();
-        final Button button = contentRider.findViewById(R.id.button);
+        final Button button = contentRider.findViewById(R.id.getRideButton);
         button.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)
