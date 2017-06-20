@@ -29,7 +29,7 @@ public class UsersManager {
     public void AddPointsForRide(String userId){
         dbHandler.IncreaseUserPoints(userId);
     }
-    public void SetRatingForRide(String userId, int rating){
-        dbHandler.RateUser(userId, rating);
+    public void RateDriver(String driverId, int rating){
+        dbHandler.RateUser(driverId, rating);
     }
 }
