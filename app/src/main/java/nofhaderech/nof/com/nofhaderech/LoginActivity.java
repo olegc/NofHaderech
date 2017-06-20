@@ -367,9 +367,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 EditText phoneTexst = (EditText) findViewById(R.id.phone);
                 String phoneTexstStr = phoneTexst.getText().toString();
 
+                EditText adressTexst = (EditText) findViewById(R.id.adress);
+                String adressTexstStr = adressTexst.getText().toString();
+
+                EditText workAdressTexst = (EditText) findViewById(R.id.workAdress);
+                String workAdressTexstStr = workAdressTexst.getText().toString();
+
 
                 UsersManager manager = new UsersManager();
-                manager.AddUser(new User(nameStr,phoneTexstStr, "Carmelia", "Rafael"));
+                manager.AddUser(new User(nameStr,phoneTexstStr, adressTexstStr, workAdressTexstStr));
 
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
