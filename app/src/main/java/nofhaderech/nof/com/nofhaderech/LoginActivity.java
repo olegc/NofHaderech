@@ -379,7 +379,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
                 UsersManager manager = new UsersManager();
-                manager.AddUser(new User(nameStr,phoneTexstStr, adressTexsstrt, workadressstr,""));
+                String token = FirebaseInstanceId.getInstance().getToken();
+                manager.AddUser(new User(nameStr,phoneTexstStr, adressTexsstrt, workadressstr,token));
 
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
