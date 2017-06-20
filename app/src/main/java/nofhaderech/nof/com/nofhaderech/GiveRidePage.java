@@ -46,7 +46,7 @@ class GiveRidePage {
         InitializeFromTime();
         InitializeToTime();
 
-        final Button button = contentDriver.findViewById(R.id.button);
+        /*final Button button = contentDriver.findViewById(R.id.giveRideButton);
         button.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)
@@ -90,7 +90,7 @@ class GiveRidePage {
 
             }
 
-        });
+        });*/
 
     }
 
