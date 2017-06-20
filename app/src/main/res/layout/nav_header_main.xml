@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/nav_header_height"
+    android:layout_height="200sp"
     android:background="@drawable/side_nav_bar"
     android:gravity="bottom"
     android:orientation="vertical"
@@ -12,24 +12,98 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+        android:layout_gravity="right"
+        android:layoutDirection="rtl"
+        android:orientation="horizontal">
 
-    <TextView
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            app:srcCompat="@drawable/nir" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingStart="16sp"
+            android:paddingEnd="16sp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:text="משה כהן"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/phoneTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:text="0541234567"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textDirection="rtl" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="משה כהן"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:layoutDirection="rtl">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="android.studio@android.com" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layoutDirection="rtl"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/nav_header_vertical_spacing">
+
+            <ImageView
+                android:layout_width="32sp"
+                android:layout_height="32sp"
+                android:layout_gravity="center"
+                android:tint="#fff"
+                app:srcCompat="@drawable/ic_stars_black_24dp" />
+
+            <TextView
+                android:id="@+id/scoreTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingEnd="10sp"
+                android:paddingStart="10sp"
+                android:text="20"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textDirection="rtl" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="nof.haderech@gmail.com"
+            android:layout_gravity="left"
+            android:paddingTop="22sp"/>
+
+    </LinearLayout>
+
+
+
+
+
 
 </LinearLayout>

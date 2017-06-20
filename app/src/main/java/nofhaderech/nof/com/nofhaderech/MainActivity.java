@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -58,10 +59,14 @@ public class MainActivity extends AppCompatActivity
         ContentDriver = findViewById(R.id.content_driver);
 
         GiveRidePage = new GiveRidePage(ContentDriver);
-        GetRidePage = new GetRidePage(ContentRider);
+        GetRidePage = new GetRidePage(ContentRider, this);
 
         MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_home);
         onNavigationItemSelected(menuItem);
+
+        View headerLayout = navigationView.getHeaderView(0);
+        TextView name = (TextView) headerLayout.findViewById(R.id.nameTextView);
+        name.setText("Oleg");
     }
 
     @Override
