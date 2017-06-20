@@ -35,6 +35,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import nofhaderech.nof.com.nofhaderech.bl.UsersManager;
+import nofhaderech.nof.com.nofhaderech.models.User;
+
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
@@ -357,6 +360,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 editor.apply();
 
                 //TODO call add user
+                //mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+                EditText nameEditTexst = (EditText) findViewById(R.id.name);
+                String nameStr = nameEditTexst.getText().toString();
+
+                EditText phoneTexst = (EditText) findViewById(R.id.phone);
+                String phoneTexstStr = phoneTexst.getText().toString();
+
+
+                UsersManager manager = new UsersManager();
+                manager.AddUser(new User(nameStr,phoneTexstStr, "Carmelia", "Rafael"));
 
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
