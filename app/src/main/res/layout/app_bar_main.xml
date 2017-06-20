@@ -21,8 +21,8 @@
     </android.support.design.widget.AppBarLayout>
 
     <include android:id="@+id/content_main" layout="@layout/content_main" android:visibility="invisible"/>
-    <include android:id="@+id/content_rider" layout="@layout/content_rider" android:visibility="invisible"/>
-    <include android:id="@+id/content_driver" layout="@layout/content_driver" android:visibility="visible"/>
+    <include android:id="@+id/content_rider" layout="@layout/content_rider" android:visibility="visible"/>
+    <include android:id="@+id/content_driver" layout="@layout/content_driver" android:visibility="invisible"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
