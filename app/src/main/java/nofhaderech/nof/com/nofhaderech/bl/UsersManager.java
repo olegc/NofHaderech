@@ -32,4 +32,8 @@ public class UsersManager {
     public void RateDriver(String driverId, int rating){
         dbHandler.RateUser(driverId, rating);
     }
+
+    public void UpdateUserTokenId(String userId, String token){
+        dbHandler.AddToDB("/users/" + userId + "/token_id", token);
+    }
 }
