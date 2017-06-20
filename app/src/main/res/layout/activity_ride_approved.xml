@@ -4,13 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="end"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="nofhaderech.nof.com.nofhaderech.ApproveRideActivity">
+    tools:context="nofhaderech.nof.com.nofhaderech.RideApprovedActivity">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -64,7 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="בקשת נסיעה"
+                    android:text="נסיעה אושרה"
                     android:textColor="@color/colorAccent"
                     android:textSize="24sp"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -79,8 +73,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
-                android:text="נמצא נוסע המבש להצטרך אלייך לנסיעה!"
+                android:text="נמצא נהג שיסיע אותך!"
                 android:textSize="15sp"
+                android:gravity="center"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -334,38 +329,31 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layoutDirection="rtl"
                 android:layout_gravity="center">
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="5sp"
+                    android:numStars="5"
+                    android:rating="4"
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:layout_marginBottom="10sp"
+                    android:layout_height="wrap_content" />
 
                 <Button
                     android:id="@+id/approve"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@android:color/holo_green_light"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorAccent"
                     android:gravity="center"
                     android:paddingEnd="30dp"
                     android:paddingStart="30dp"
                     android:text="אשר"
-                    android:textColor="#fff"
-                    android:textSize="22dp" />
-
-                <Button
-                    android:id="@+id/cancel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@android:color/holo_red_light"
-                    android:gravity="center"
-                    android:paddingEnd="30dp"
-                    android:paddingStart="30dp"
-                    android:layout_marginStart="30sp"
-                    android:text="בטל"
                     android:textColor="#fff"
                     android:textSize="22dp" />
 

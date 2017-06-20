@@ -33,6 +33,7 @@
                 android:value="nofhaderech.nof.com.nofhaderech.LoginActivity" />
         </activity>
         <activity android:name=".ApproveRideActivity" />
+        <activity android:name=".RideApprovedActivity"></activity>
         <!-- [START firebase_service] -->
         <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
