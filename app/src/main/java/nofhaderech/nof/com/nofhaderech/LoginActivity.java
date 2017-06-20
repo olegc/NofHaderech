@@ -3,22 +3,24 @@ package nofhaderech.nof.com.nofhaderech;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
-
+import android.content.Context;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -32,6 +34,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import nofhaderech.nof.com.nofhaderech.bl.UsersManager;
+import nofhaderech.nof.com.nofhaderech.models.User;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -60,6 +65,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
+    private EditText mNameView;
+    private EditText mPhoneView;
 
     private View mProgressView;
     private View mLoginFormView;
@@ -72,6 +79,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mNameView = (EditText) findViewById(R.id.name);
+        mPhoneView = (EditText) findViewById(R.id.phone);
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -98,20 +107,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mProgressView = findViewById(R.id.login_progress);
 
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-
-                startActivity(intent);
-            }
-        }).start();
     }
 
     private void populateAutoComplete() {
@@ -188,9 +183,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
+            //mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
-            cancel = true;
+            //cancel = true;
         } else if (!isEmailValid(email)) {
             mEmailView.setError(getString(R.string.error_invalid_email));
             focusView = mEmailView;
@@ -212,7 +207,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-       // return email.contains("@");
+        // return email.contains("@");
         return true;
     }
 
@@ -311,6 +306,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         int IS_PRIMARY = 1;
     }
 
+
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
@@ -354,6 +350,27 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
+                String name = mNameView.getText().toString();
+                String phone = mPhoneView.getText().toString();
+
+                SharedPreferences sharedPref = getSharedPreferences("NofPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("name", name);
+                editor.putString("phone", phone);
+                editor.apply();
+
+                //TODO call add user
+                //mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+                EditText nameEditTexst = (EditText) findViewById(R.id.name);
+                String nameStr = nameEditTexst.getText().toString();
+
+                EditText phoneTexst = (EditText) findViewById(R.id.phone);
+                String phoneTexstStr = phoneTexst.getText().toString();
+
+
+                UsersManager manager = new UsersManager();
+                manager.AddUser(new User(nameStr,phoneTexstStr, "Carmelia", "Rafael"));
+
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             } else {

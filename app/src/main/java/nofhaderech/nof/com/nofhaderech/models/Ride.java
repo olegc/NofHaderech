@@ -1,7 +1,5 @@
 package nofhaderech.nof.com.nofhaderech.models;
 
-import java.util.UUID;
-
 /**
  * Created by USER on 6/19/2017.
  */
@@ -10,11 +8,11 @@ public class Ride {
     public String user_id;
     public RideDetails rideDetails;
 
+    public Ride(){
+        rideDetails = new RideDetails();
+    }
 
-    public Ride(){}
-
-    public Ride(String user_id, RideDetails rideDetails)
-    {
+    public Ride(String user_id, RideDetails rideDetails) {
         this.user_id = user_id;
         this.rideDetails = rideDetails;
     }

@@ -1,6 +1,8 @@
 package nofhaderech.nof.com.nofhaderech;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -13,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -57,11 +60,21 @@ public class MainActivity extends AppCompatActivity
         ContentRider = findViewById(R.id.content_rider);
         ContentDriver = findViewById(R.id.content_driver);
 
-        GiveRidePage = new GiveRidePage(ContentDriver);
-        GetRidePage = new GetRidePage(ContentRider);
+        GiveRidePage = new GiveRidePage(ContentDriver,this);
+        GetRidePage = new GetRidePage(ContentRider, this);
 
         MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_home);
         onNavigationItemSelected(menuItem);
+
+        View headerLayout = navigationView.getHeaderView(0);
+        TextView nameTextView = headerLayout.findViewById(R.id.nameTextView);
+        TextView phoneTextView = headerLayout.findViewById(R.id.phoneTextView);
+
+        SharedPreferences sharedPref = getSharedPreferences("NofPrefs", Context.MODE_PRIVATE);
+        String name = sharedPref.getString("name", "");
+        String phone = sharedPref.getString("phone", "0541234567");
+        nameTextView.setText(name);
+        phoneTextView.setText(phone);
     }
 
     @Override

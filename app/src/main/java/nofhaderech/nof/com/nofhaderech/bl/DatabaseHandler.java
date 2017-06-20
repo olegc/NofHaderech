@@ -74,7 +74,9 @@ public class DatabaseHandler {
                 if (u == null) {
                     return Transaction.success(mutableData);
                 }
-                u.rating = u.rating * u.points + rating;
+                double newRating = (u.rating * u.num_ratings + rating) / (double)(u.num_ratings + 1);
+                u.rating = newRating;
+                u.num_ratings++;
                 mutableData.setValue(u);
                 return Transaction.success(mutableData);
             }

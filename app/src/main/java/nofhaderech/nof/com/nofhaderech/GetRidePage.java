@@ -1,14 +1,24 @@
 package nofhaderech.nof.com.nofhaderech;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+import nofhaderech.nof.com.nofhaderech.bl.RidesManager;
+import nofhaderech.nof.com.nofhaderech.models.Ride;
+import nofhaderech.nof.com.nofhaderech.models.RideDetails;
 
 public class GetRidePage {
 
@@ -26,16 +36,65 @@ public class GetRidePage {
     private int ToHour;
     private int ToMinutes;
 
-    GetRidePage(final View contentDriver) {
-        Context = contentDriver.getContext();
-        DateEditText = contentDriver.findViewById(R.id.getRideDay);
+    GetRidePage(final View contentRider, final Activity activity ) {
+        Context = contentRider.getContext();
+        DateEditText = contentRider.findViewById(R.id.getRideDay);
 
-        TimeFromText = contentDriver.findViewById(R.id.getRideFromTime);
-        TimeToText = contentDriver.findViewById(R.id.getRideToTime);
+        TimeFromText = contentRider.findViewById(R.id.getRideFromTime);
+        TimeToText = contentRider.findViewById(R.id.getRideToTime);
 
         InitializeDate();
         InitializeFromTime();
         InitializeToTime();
+        final Button button = contentRider.findViewById(R.id.getRideButton);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+
+                RidesManager manager = new RidesManager();
+                EditText giveRideFromTime   = (EditText)contentRider.findViewById(R.id.getRideFromTime);
+                String giveRideFromTimeStr = giveRideFromTime.getText().toString();
+                String[]  parts = giveRideFromTimeStr.split(":",2);
+                String  giveRideFromTimeHour = parts[0];
+                String giveRideFromTimeMinute = parts[1];
+                int giveRideFromTimeHourInt = Integer.parseInt(giveRideFromTimeHour);
+                int giveRideFromTimeMinuteInt = Integer.parseInt(giveRideFromTimeMinute);
+                EditText giveRideToTime   = (EditText)contentRider.findViewById(R.id.getRideToTime);
+                String giveRideToTimeStr = giveRideToTime.getText().toString();
+                parts = giveRideToTimeStr.split(":",2);
+                String  giveRideToTimeHour = parts[0];
+                String giveRideToTimeMinute = parts[1];
+                int giveRideToTimeHourInt = Integer.parseInt(giveRideToTimeHour);
+                int giveRideToTimeMinuteInt = Integer.parseInt(giveRideToTimeMinute);
+
+                Calendar calendar = Calendar.getInstance();
+                Year = calendar.get(Calendar.YEAR);
+                Month = calendar.get(Calendar.MONTH);
+                Day = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+                EditText giveRideFromText   = (EditText)contentRider.findViewById(R.id.getRideFromText);
+                String giveRideFromTextStr = giveRideFromText.getText().toString();
+
+                EditText giveRideToText   = (EditText)contentRider.findViewById(R.id.getRideToText);
+                String giveRideToTextStr = giveRideToText.getText().toString();
+
+
+                Date from = new GregorianCalendar(Year,Month,Day,giveRideFromTimeHourInt,giveRideFromTimeMinuteInt,00).getTime();
+                Date to = new GregorianCalendar(Year,Month,Day,giveRideToTimeHourInt,giveRideToTimeMinuteInt,00).getTime();
+                SharedPreferences sharedPref = activity.getSharedPreferences("NofPrefs",Context.MODE_PRIVATE);
+                String riderName = sharedPref.getString("name", "Oren");
+                manager.AddRideOffer(new Ride(riderName, new RideDetails(giveRideFromTextStr, giveRideToTextStr, from, to)));
+                CharSequence text = String.format( "בקשת נסיעה עבור %s הוזנה במערכת",riderName );
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(activity, text, duration);
+                toast.show();
+
+
+            }
+
+        });
     }
 
     private void InitializeDate() {

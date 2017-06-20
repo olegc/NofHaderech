@@ -9,9 +9,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/nof_haderech"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/nof_haderech"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -32,6 +32,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nofhaderech.nof.com.nofhaderech.LoginActivity" />
         </activity>
+        <activity android:name=".ApproveRideActivity"></activity>
     </application>
 
 </manifest>
