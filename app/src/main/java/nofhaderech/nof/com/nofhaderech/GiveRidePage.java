@@ -1,13 +1,16 @@
 package nofhaderech.nof.com.nofhaderech;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -34,7 +37,7 @@ class GiveRidePage {
     private int ToMinutes;
 
 
-    GiveRidePage(final View contentDriver) {
+    GiveRidePage(final View contentDriver, final Activity activity) {
         Context = contentDriver.getContext();
         DateEditText = contentDriver.findViewById(R.id.giveRideDay);
 
@@ -83,10 +86,13 @@ class GiveRidePage {
 
                 Date from = new GregorianCalendar(Year,Month,Day,giveRideFromTimeHourInt,giveRideFromTimeMinuteInt,00).getTime();
                 Date to = new GregorianCalendar(Year,Month,Day,giveRideToTimeHourInt,giveRideToTimeMinuteInt,00).getTime();
-
-                manager.AddRideOffer(new Ride("OrenShm", new RideDetails(giveRideFromTextStr, giveRideToTextStr, from, to)));
-
-
+                SharedPreferences sharedPref = activity.getSharedPreferences("NofPrefs",Context.MODE_PRIVATE);
+                String riderName = sharedPref.getString("name", "Oren");
+                manager.AddRideOffer(new Ride(riderName, new RideDetails(giveRideFromTextStr, giveRideToTextStr, from, to)));
+                CharSequence text = String.format( "דיווח נסיעה עבור %s הוזן במערכת",riderName );
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(activity, text, duration);
+                toast.show();
 
             }
 

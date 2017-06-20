@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity
         ContentRider = findViewById(R.id.content_rider);
         ContentDriver = findViewById(R.id.content_driver);
 
-        GiveRidePage = new GiveRidePage(ContentDriver);
+        GiveRidePage = new GiveRidePage(ContentDriver,this);
         GetRidePage = new GetRidePage(ContentRider, this);
 
         MenuItem menuItem = navigationView.getMenu().findItem(R.id.nav_home);
