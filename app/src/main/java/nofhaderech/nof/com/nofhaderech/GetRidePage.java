@@ -43,21 +43,21 @@ public class GetRidePage {
         InitializeDate();
         InitializeFromTime();
         InitializeToTime();
-        final Button button = contentRider.findViewById(R.id.button);
+        final Button button = contentRider.findViewById(R.id.getRideButton);
         button.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View v)
             {
 
                 RidesManager manager = new RidesManager();
-                EditText giveRideFromTime   = (EditText)contentRider.findViewById(R.id.giveRideFromTime);
+                EditText giveRideFromTime   = (EditText)contentRider.findViewById(R.id.getRideFromTime);
                 String giveRideFromTimeStr = giveRideFromTime.getText().toString();
                 String[]  parts = giveRideFromTimeStr.split(":",2);
                 String  giveRideFromTimeHour = parts[0];
                 String giveRideFromTimeMinute = parts[1];
                 int giveRideFromTimeHourInt = Integer.parseInt(giveRideFromTimeHour);
                 int giveRideFromTimeMinuteInt = Integer.parseInt(giveRideFromTimeMinute);
-                EditText giveRideToTime   = (EditText)contentRider.findViewById(R.id.giveRideToTime);
+                EditText giveRideToTime   = (EditText)contentRider.findViewById(R.id.getRideToTime);
                 String giveRideToTimeStr = giveRideToTime.getText().toString();
                 parts = giveRideToTimeStr.split(":",2);
                 String  giveRideToTimeHour = parts[0];
@@ -71,10 +71,10 @@ public class GetRidePage {
                 Day = calendar.get(Calendar.DAY_OF_MONTH);
 
 
-                EditText giveRideFromText   = (EditText)contentRider.findViewById(R.id.giveRideFromText);
+                EditText giveRideFromText   = (EditText)contentRider.findViewById(R.id.getRideFromText);
                 String giveRideFromTextStr = giveRideFromText.getText().toString();
 
-                EditText giveRideToText   = (EditText)contentRider.findViewById(R.id.giveRideToText);
+                EditText giveRideToText   = (EditText)contentRider.findViewById(R.id.getRideToText);
                 String giveRideToTextStr = giveRideToText.getText().toString();
 
 
