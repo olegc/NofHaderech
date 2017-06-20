@@ -22,6 +22,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,6 +32,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -369,7 +372,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
                 UsersManager manager = new UsersManager();
-                manager.AddUser(new User(nameStr,phoneTexstStr, "Carmelia", "Rafael"));
+                String token = FirebaseInstanceId.getInstance().getToken();
+
+                manager.AddUser(new User(nameStr,phoneTexstStr, "Carmelia", "Rafael", token));
 
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);

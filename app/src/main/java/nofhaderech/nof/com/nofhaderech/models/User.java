@@ -19,15 +19,15 @@ public class User {
         this.points = 0;
         this.rating = 0;
         this.num_ratings = 0;
-        this.token_id = null;
     }
 
-    public User(String id, String mobile, String home_addr, String work_addr) {
+    public User(String id, String mobile, String home_addr, String work_addr, String token_id) {
         this();
         this.id = id;
         this.mobile = mobile;
         this.home_addr = home_addr;
         this.work_addr = work_addr;
+        this.token_id = token_id;
     }
 
 
