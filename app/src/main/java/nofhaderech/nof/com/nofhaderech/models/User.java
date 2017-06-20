@@ -24,5 +24,8 @@ public class User {
         this.rating = rating;
     }
 
-
+    public boolean IsSameUser(User other)
+    {
+        return id.equals(other.id);
+    }
 }
