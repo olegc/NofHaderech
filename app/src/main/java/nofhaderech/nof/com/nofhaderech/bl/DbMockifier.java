@@ -28,7 +28,7 @@ public class DbMockifier {
 
     public void testAddUser() throws Exception {
         UsersManager manager = new UsersManager();
-        manager.AddUser(new User("OrenShm", "0509218146", "Carmelia", "Rafael"));
+        manager.AddUser(new User("OrenShm", "0509218146", "Carmelia", "Rafael", ""));
     }
 
     public void testAddRideOffer() throws Exception {

@@ -85,7 +85,7 @@ public class GetRidePage {
                 Date to = new GregorianCalendar(Year,Month,Day,giveRideToTimeHourInt,giveRideToTimeMinuteInt,00).getTime();
                 SharedPreferences sharedPref = activity.getSharedPreferences("NofPrefs",Context.MODE_PRIVATE);
                 String riderName = sharedPref.getString("name", "Oren");
-                manager.AddRideOffer(new Ride(riderName, new RideDetails(giveRideFromTextStr, giveRideToTextStr, from, to)));
+                manager.AddRideRequest(new Ride(riderName, new RideDetails(giveRideFromTextStr, giveRideToTextStr, from, to)));
                 CharSequence text = String.format( "בקשת נסיעה עבור %s הוזנה במערכת",riderName );
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(activity, text, duration);

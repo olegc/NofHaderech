@@ -55,4 +55,8 @@ public class UsersManager {
         }
         return isExist;
     }
+
+    public void UpdateUserTokenId(String userId, String token){
+        dbHandler.AddToDB("/users/" + userId + "/token_id", token);
+    }
 }
