@@ -32,7 +32,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nofhaderech.nof.com.nofhaderech.LoginActivity" />
         </activity>
-        <activity android:name=".ApproveRideActivity"></activity>
+        <activity android:name=".ApproveRideActivity" />
+        <activity android:name=".RideApprovedActivity"></activity>
     </application>
 
 </manifest>
