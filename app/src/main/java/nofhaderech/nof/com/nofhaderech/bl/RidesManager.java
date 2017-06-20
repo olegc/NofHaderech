@@ -47,7 +47,7 @@ public class RidesManager
                     {
                         MatchedDriver = driver.getKey();
 
-                        String table = "/matchesFromRiderToDriver/" + ride.user_id +"/" + driver.user_id;
+                        String table = "/matchesFromRiderToDriver/" + ride.user_id +"/" + driver.user_id + "/token_id";
                         FindToken(table, driver.user_id);
 
                         findMatch = true;
@@ -94,7 +94,7 @@ public class RidesManager
                     {
                         mDatabase.child("/ridesRequests/" + rider.getKey()).removeValue();
 
-                        String table = "/matchesFromDriverToRider/" + ride.user_id +"/" + rider.user_id;
+                        String table = "/matchesFromDriverToRider/" + ride.user_id +"/" + rider.user_id  + "/token_id";
                         FindToken(table, rider.user_id);
 
                         return Transaction.success(mutableData);
@@ -123,7 +123,7 @@ public class RidesManager
                 if (u == null) {
                     return Transaction.success(mutableData);
                 }
-                //TokenId = u.token_id;
+                TokenId = u.token_id;
                 return Transaction.success(mutableData);
             }
 

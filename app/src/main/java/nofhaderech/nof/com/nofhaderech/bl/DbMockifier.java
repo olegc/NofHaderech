@@ -16,9 +16,9 @@ public class DbMockifier {
     public void InitializeDB()
     {
         try {
-//            testAddUser();
-            testAddRideOffer();
-            Thread.sleep(5000);
+            //testAddUser();
+            //testAddRideOffer();
+            //Thread.sleep(5000);
             testAddRideRequest();
 
         } catch (Exception e) {
@@ -28,6 +28,8 @@ public class DbMockifier {
 
     public void testAddUser() throws Exception {
         UsersManager manager = new UsersManager();
+//        manager.AddUser(new User("OrenShm", "0509218146", "Carmelia", "Rafael", ""));
+        manager.AddUser(new User("Good driver", "0509218146", "Carmelia", "Rafael", ""));
         manager.AddUser(new User("OrenShm", "0509218146", "Carmelia", "Rafael", ""));
     }
 
@@ -44,9 +46,9 @@ public class DbMockifier {
     public void testAddRideRequest() throws Exception {
         RidesManager manager = new RidesManager();
 
-        Date from = new GregorianCalendar(2017,6,20,17,00,00).getTime();
-        Date to = new GregorianCalendar(2017,6,20,17,30,00).getTime();
-        manager.AddRideRequest(new Ride("Bad Guy", new RideDetails("Rafael", "got screwed", from, to)));
+        Date from = new GregorianCalendar(2017,5 ,20,14,00,00).getTime();
+        Date to = new GregorianCalendar(2017,5,20,15,00,00).getTime();
+        //manager.AddRideRequest(new Ride("Bad Guy", new RideDetails("Rafael", "got screwed", from, to)));
         manager.AddRideRequest(new Ride("Good Guy", new RideDetails("Rafael", "good place", from, to)));
     }
 }

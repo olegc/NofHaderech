@@ -103,7 +103,7 @@ class GiveRidePage {
     private void InitializeDate() {
         Calendar calendar = Calendar.getInstance();
         Year = calendar.get(Calendar.YEAR);
-        Month = calendar.get(Calendar.MONTH);
+        Month = calendar.get(Calendar.MONTH) + 1;
         Day = calendar.get(Calendar.DAY_OF_MONTH);
 
         DateEditText.setText("" + Day + " - " + Month + " - " + Year);
