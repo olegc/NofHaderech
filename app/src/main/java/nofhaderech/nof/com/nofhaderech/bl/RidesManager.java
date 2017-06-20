@@ -19,6 +19,7 @@ import nofhaderech.nof.com.nofhaderech.models.User;
 public class RidesManager
 {
     private String MatchedDriver;
+    private String TokenId;
 
     public RidesManager(){
     }
@@ -45,7 +46,10 @@ public class RidesManager
                     if(hasMatch)
                     {
                         MatchedDriver = driver.getKey();
-                        //mDatabase.child("/ridesOffers/" + driver.getKey()).removeValue();
+
+                        String table = "/matchesFromRiderToDriver/" + ride.user_id +"/" + driver.user_id;
+                        FindToken(table, driver.user_id);
+
                         findMatch = true;
                         break;
                     }
@@ -89,6 +93,10 @@ public class RidesManager
                     if(hasMatch)
                     {
                         mDatabase.child("/ridesRequests/" + rider.getKey()).removeValue();
+
+                        String table = "/matchesFromDriverToRider/" + ride.user_id +"/" + rider.user_id;
+                        FindToken(table, rider.user_id);
+
                         return Transaction.success(mutableData);
                     }
                 }
@@ -100,9 +108,31 @@ public class RidesManager
             @Override
             public void onComplete(DatabaseError databaseError, boolean b,
                                    DataSnapshot dataSnapshot) {
-                Log.i("1", "1");
                 // Transaction completed
                 Log.d(DatabaseHandler.TAG, "AddRideOffer:onComplete:" + databaseError);
+            }
+        });
+    }
+
+    private void FindToken(final String table, final String user_id) {
+        final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("/users/" + user_id).runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(MutableData mutableData) {
+                User u = mutableData.getValue(User.class);
+                if (u == null) {
+                    return Transaction.success(mutableData);
+                }
+                //TokenId = u.token_id;
+                return Transaction.success(mutableData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b,
+                                   DataSnapshot dataSnapshot) {
+                // Transaction completed
+                mDatabase.child(table).setValue(TokenId);
+                Log.d(DatabaseHandler.TAG, "postTransaction:onComplete:" + databaseError);
             }
         });
     }
