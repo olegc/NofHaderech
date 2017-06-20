@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -85,7 +86,10 @@ public class GetRidePage {
                 SharedPreferences sharedPref = activity.getSharedPreferences("NofPrefs",Context.MODE_PRIVATE);
                 String riderName = sharedPref.getString("name", "Oren");
                 manager.AddRideOffer(new Ride(riderName, new RideDetails(giveRideFromTextStr, giveRideToTextStr, from, to)));
-
+                CharSequence text = String.format( "בקשת נסיעה עבור %s הוזנה במערכת",riderName );
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(activity, text, duration);
+                toast.show();
 
 
             }
