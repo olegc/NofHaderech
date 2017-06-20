@@ -1,8 +1,10 @@
 package nofhaderech.nof.com.nofhaderech;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -33,7 +35,7 @@ public class GetRidePage {
     private int ToHour;
     private int ToMinutes;
 
-    GetRidePage(final View contentRider) {
+    GetRidePage(final View contentRider, final Activity activity ) {
         Context = contentRider.getContext();
         DateEditText = contentRider.findViewById(R.id.getRideDay);
 
@@ -80,8 +82,9 @@ public class GetRidePage {
 
                 Date from = new GregorianCalendar(Year,Month,Day,giveRideFromTimeHourInt,giveRideFromTimeMinuteInt,00).getTime();
                 Date to = new GregorianCalendar(Year,Month,Day,giveRideToTimeHourInt,giveRideToTimeMinuteInt,00).getTime();
-
-                manager.AddRideOffer(new Ride("OrenShm", new RideDetails(giveRideFromTextStr, giveRideToTextStr, from, to)));
+                SharedPreferences sharedPref = activity.getSharedPreferences("NofPrefs",Context.MODE_PRIVATE);
+                String riderName = sharedPref.getString("name", "Oren");
+                manager.AddRideOffer(new Ride(riderName, new RideDetails(giveRideFromTextStr, giveRideToTextStr, from, to)));
 
 
 

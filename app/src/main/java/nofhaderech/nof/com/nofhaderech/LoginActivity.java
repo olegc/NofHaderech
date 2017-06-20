@@ -368,7 +368,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     ActivityCompat.requestPermissions(LoginActivity.this, new String[]{android.Manifest.permission.READ_PHONE_STATE}, 111);
                 }
 
-                SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+                SharedPreferences sharedPref = getSharedPreferences("NofPrefs", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("name", name);
                 editor.apply();
