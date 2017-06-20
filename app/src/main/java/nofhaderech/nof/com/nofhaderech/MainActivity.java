@@ -1,6 +1,8 @@
 package nofhaderech.nof.com.nofhaderech;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -65,8 +67,14 @@ public class MainActivity extends AppCompatActivity
         onNavigationItemSelected(menuItem);
 
         View headerLayout = navigationView.getHeaderView(0);
-        TextView name = (TextView) headerLayout.findViewById(R.id.nameTextView);
-        name.setText("Oleg");
+        TextView nameTextView = headerLayout.findViewById(R.id.nameTextView);
+        TextView phoneTextView = headerLayout.findViewById(R.id.phoneTextView);
+
+        SharedPreferences sharedPref = getSharedPreferences("NofPrefs", Context.MODE_PRIVATE);
+        String name = sharedPref.getString("name", "");
+        String phone = sharedPref.getString("phone", "0541234567");
+        nameTextView.setText(name);
+        phoneTextView.setText(phone);
     }
 
     @Override
