@@ -125,15 +125,6 @@ public class MainActivity extends AppCompatActivity
             ContentMain.setVisibility(View.INVISIBLE);
             ContentRider.setVisibility(View.INVISIBLE);
             ContentDriver.setVisibility(View.VISIBLE);
-        }
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
