@@ -30,5 +30,8 @@ public class User {
         this.token_id = token_id;
     }
 
-
+    public boolean IsSameUser(User other)
+    {
+        return id.equals(other.id);
+    }
 }

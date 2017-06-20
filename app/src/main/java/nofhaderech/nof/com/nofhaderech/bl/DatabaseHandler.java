@@ -17,7 +17,7 @@ import nofhaderech.nof.com.nofhaderech.models.User;
  */
 
 public class DatabaseHandler {
-    private static final String TAG = "DatabaseHandler";
+    public static final String TAG = "DatabaseHandler";
 
     // [START declare_database_ref]
     private DatabaseReference mDatabase;
