@@ -1,8 +1,10 @@
 package nofhaderech.nof.com.nofhaderech;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -33,7 +35,7 @@ public class GetRidePage {
     private int ToHour;
     private int ToMinutes;
 
-    GetRidePage(final View contentRider) {
+    GetRidePage(final View contentRider, final Activity activity ) {
         Context = contentRider.getContext();
         DateEditText = contentRider.findViewById(R.id.getRideDay);
 
@@ -50,14 +52,14 @@ public class GetRidePage {
             {
 
                 RidesManager manager = new RidesManager();
-                EditText giveRideFromTime   = (EditText)contentRider.findViewById(R.id.giveRideFromTime);
+                EditText giveRideFromTime   = (EditText)contentRider.findViewById(R.id.getRideFromTime);
                 String giveRideFromTimeStr = giveRideFromTime.getText().toString();
                 String[]  parts = giveRideFromTimeStr.split(":",2);
                 String  giveRideFromTimeHour = parts[0];
                 String giveRideFromTimeMinute = parts[1];
                 int giveRideFromTimeHourInt = Integer.parseInt(giveRideFromTimeHour);
                 int giveRideFromTimeMinuteInt = Integer.parseInt(giveRideFromTimeMinute);
-                EditText giveRideToTime   = (EditText)contentRider.findViewById(R.id.giveRideToTime);
+                EditText giveRideToTime   = (EditText)contentRider.findViewById(R.id.getRideToTime);
                 String giveRideToTimeStr = giveRideToTime.getText().toString();
                 parts = giveRideToTimeStr.split(":",2);
                 String  giveRideToTimeHour = parts[0];
@@ -71,17 +73,18 @@ public class GetRidePage {
                 Day = calendar.get(Calendar.DAY_OF_MONTH);
 
 
-                EditText giveRideFromText   = (EditText)contentRider.findViewById(R.id.giveRideFromText);
+                EditText giveRideFromText   = (EditText)contentRider.findViewById(R.id.getRideFromText);
                 String giveRideFromTextStr = giveRideFromText.getText().toString();
 
-                EditText giveRideToText   = (EditText)contentRider.findViewById(R.id.giveRideToText);
+                EditText giveRideToText   = (EditText)contentRider.findViewById(R.id.getRideToText);
                 String giveRideToTextStr = giveRideToText.getText().toString();
 
 
                 Date from = new GregorianCalendar(Year,Month,Day,giveRideFromTimeHourInt,giveRideFromTimeMinuteInt,00).getTime();
                 Date to = new GregorianCalendar(Year,Month,Day,giveRideToTimeHourInt,giveRideToTimeMinuteInt,00).getTime();
-
-                manager.AddRideOffer(new Ride("OrenShm", new RideDetails(giveRideFromTextStr, giveRideToTextStr, from, to)));
+                SharedPreferences sharedPref = activity.getSharedPreferences("NofPrefs",Context.MODE_PRIVATE);
+                String riderName = sharedPref.getString("name", "Oren");
+                manager.AddRideOffer(new Ride(riderName, new RideDetails(giveRideFromTextStr, giveRideToTextStr, from, to)));
 
 
 
