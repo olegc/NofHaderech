@@ -13,6 +13,7 @@ public class RideDetails {
     public Date from_time;
     public Date to_time;
 
+    public RideDetails(){}
     public RideDetails(String src_addr, String dst_addr, Date from_time, Date to_time) {
         this.src_addr = src_addr;
         this.dst_addr = dst_addr;
